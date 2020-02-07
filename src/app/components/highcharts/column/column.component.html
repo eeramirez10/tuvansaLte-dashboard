@@ -1,0 +1,32 @@
+<div class="card bg-dark">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            Sales
+        </h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li (click)=anio(month,2020) class="nav-item">
+                    <a class="nav-link active" data-toggle="tab">2020</a>
+                </li>
+                <li (click)=anio(month,2019) class="nav-item">
+                    <a class="nav-link"  data-toggle="tab">2019</a>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.card-header -->
+    <div class="card-body">
+        <div class="tab-content p-0">
+            <div *ngIf="!loading ">
+                <highcharts-chart id="container" class="chart tab-pane active" [Highcharts]="Highcharts" [options]="chartOptions" style=" width: 100%; display: block;">
+                </highcharts-chart>
+            </div>
+
+            <div *ngIf="loading" class="container  text-center mt-5 mb-5" >
+
+                <i class="fas fa-spinner fa-spin fa-5x"></i>
+            </div>
+
+        </div>
+    </div><!-- /.card-body -->
+</div>

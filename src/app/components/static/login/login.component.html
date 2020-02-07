@@ -1,0 +1,34 @@
+<div class="wrapper fadeInDown mt-5">
+    <div id="formContent">
+
+        <div class="fadeIn first">
+            <img width="10px" src="assets/img/logo-tuvansa.png" id="icon" alt="User Icon" />
+        </div>
+
+  
+        <form (ngSubmit)="login(f)" #f="ngForm">
+            <input type="email" class="fadeIn second form-control "
+                [ngClass]="{ 'is-invalid': f.controls.email?.touched && f.controls.email?.invalid, 'is-valid':f.controls.email?.valid} "
+                placeholder="login" [(ngModel)]="email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                minlength="6" required autocomplete="off">
+            <div class="invalid-feedback" *ngIf="  f.controls.email?.errors?.required ">
+                Este campo es requerido
+            </div>
+            <input [ngClass]="{ 'is-invalid': f.controls.password?.touched && f.controls.password?.invalid, 'is-valid':f.controls.password?.valid} "
+            type="password" class="fadeIn third form-control " placeholder="password"
+                [(ngModel)]="password" name="password" required>
+            <div *ngIf="f.controls.password?.errors?.required " class="invalid-feedback">
+               Este campo es requerido
+            </div>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+
+
+        <div id="formFooter">
+            <a class="underlineHover valid-feedback" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
+

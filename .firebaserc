@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tuvansa": {
+      "hosting": {
+        "tuvansaLte": [
+          "tuvansa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tuvansa"
+  }
+}

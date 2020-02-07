@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "site": "tuvansa-dashboard",
+    "public": "dist/tuvansaLte",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+
+
+

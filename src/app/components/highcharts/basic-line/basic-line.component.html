@@ -1,0 +1,60 @@
+<div class="card bg-dark">
+    <div class="card-header">
+        <div class="card-title">
+            <ul class="nav nav-pills ">
+                <li (click)="getAll()" class="nav-item">
+                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Todas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-danger dropdown-toggle nav-link active ml-2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sucursales</a>
+                    <div class="dropdown-menu">
+                        <a (click)="getMexicoSellPerYear()" class="dropdown-item"  >Mexico</a>
+                        <a (click)="getMonterreySellPerYear()" class="dropdown-item" >Monterrey</a>
+                        <a (click)="getVeracruzSellPerYear()" class="dropdown-item" >Veracruz</a>
+                        <div class="dropdown-divider"></div>
+                        <a (click)="getMexicaliSellPerYear()" class="dropdown-item" >Mexicali</a>
+                        <a (click)="getQueretaroSellPerYear()" class="dropdown-item" >Queretaro</a>
+                    </div>
+                </li>
+<!--                 <li (click)="getMexicoSellPerYear()" class="nav-item">
+                    <a class="nav-link " href="#revenue-chart" data-toggle="tab">Mexico</a>
+                </li>
+                <li (click)="getMonterreySellPerYear()" class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Monterrey</a>
+                </li>
+                <li (click)="getVeracruzSellPerYear()" class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Veracruz</a>
+                </li>
+                <li (click)="getMexicaliSellPerYear()" class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Mexicali</a>
+                </li>
+                <li (click)="getQueretaroSellPerYear()" class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Queretaro</a>
+                </li> -->
+            </ul>
+        </div>
+        <div *ngIf="all" class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li (click)='anio20(2020)' class="nav-item">
+                    <a class="nav-link active"  data-toggle="tab">2020</a>
+                </li>
+                <li (click)='anio19(2019)' class="nav-item">
+                    <a class="nav-link"  data-toggle="tab">2019</a>
+                </li>
+                <li (click)='anio18(2018)' class="nav-item">
+                    <a class="nav-link"  data-toggle="tab">2018</a>
+                </li>
+            </ul>
+        </div>
+
+    </div><!-- /.card-header -->
+    <div class="card-body">
+        <div class="tab-content p-0">
+
+            <highcharts-chart id="line" [Highcharts]="Highcharts" [options]="chartOptions"
+                style=" width: 100%; display: block;">
+            </highcharts-chart>
+
+        </div>
+    </div><!-- /.card-body -->
+</div>
