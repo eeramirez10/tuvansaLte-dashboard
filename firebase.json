@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "tuvansa-dashboard",
-    "public": "dist/tuvansaLte",
+    "site":"tuvansa-dashboard",
+    "public": "dist/tuvansalte",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -15,6 +15,3 @@
     ]
   }
 }
-
-
-

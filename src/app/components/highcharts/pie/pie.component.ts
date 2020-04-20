@@ -5,6 +5,7 @@ import Drilldown from 'highcharts/modules/drilldown';
 Drilldown(Highcharts);
 import theme from 'highcharts/themes/dark-unica'
 import { TuvansaService } from 'src/app/services/tuvansa.service';
+
 theme(Highcharts);
 
 
@@ -12,13 +13,14 @@ theme(Highcharts);
 @Component({
   selector: 'app-pie',
   templateUrl: './pie.component.html',
-  styles: []
+  styles: [' a{ cursor:pointer } ']
 })
 export class PieComponent implements OnInit {
   date: Date = new Date();
+  years: any [] = []
   months: String[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   month = this.date.getMonth();
-  year = this.date.getFullYear()
+  currentYear = this.date.getFullYear()
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
     series: [{
@@ -53,15 +55,21 @@ export class PieComponent implements OnInit {
   };
 
   constructor(private tuvansaService: TuvansaService) {
-    this.tuvansaService.getFamilies(2020,1).subscribe( (data:any)=>{
-   
 
+    
+    this.years = this.tuvansaService.getDateMonthYearsOfTotalSells();
+
+
+  
+    
+
+    this.tuvansaService.getFamilies(2020,1).subscribe( (data:any)=>{
       this.chartOptions.drilldown.series = data;
       Highcharts.chart('pie', this.chartOptions)
     })
-    this.getData(this.month, this.year)
+    this.getData(this.month, this.currentYear)
     setInterval(()=>{
-      this.getData(this.month, this.year)
+      this.getData(this.month, this.currentYear)
     },180000)
   }
 
@@ -69,12 +77,13 @@ export class PieComponent implements OnInit {
   }
 
   getData(month, year) {
+    console.log(month,year)
     this.chartOptions.series[0]['data'] = [];
     this.tuvansaService.getBranchOfficesMonth(month + 1, year).subscribe((data: any) => {
       const sucursales = data;
       
       if (sucursales.length === 0){
-        this.chartOptions.title.text = `Aun sin ventas ${this.getMonths(month)}, ${year}`;
+        this.chartOptions.title.text = `Aun sin ventas <strong>${this.getMonths(month)}, ${year}</strong> `;
         Highcharts.chart('pie', this.chartOptions)
         return;        
       }

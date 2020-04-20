@@ -1,6 +1,23 @@
 <div class="card bg-dark">
     <div class="card-header">
-        <div class="card-title">
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label (click)="getAll()" class="btn  btn-primary btn-sm active ">
+                <input type="radio" name="options" id="option1" checked> Todas
+            </label>
+            <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sucursales
+              </button>
+              <div class="dropdown-menu">
+                <a (click)="getMexicoSellPerYear()" class="dropdown-item"  >Mexico</a>
+                <a (click)="getMonterreySellPerYear()" class="dropdown-item" >Monterrey</a>
+                <a (click)="getVeracruzSellPerYear()" class="dropdown-item" >Veracruz</a>
+                <div class="dropdown-divider"></div>
+                <a (click)="getMexicaliSellPerYear()" class="dropdown-item" >Mexicali</a>
+                <a (click)="getQueretaroSellPerYear()" class="dropdown-item" >Queretaro</a>
+              </div>
+        </div>
+        <!--         <div class="card-title">
             <ul class="nav nav-pills ">
                 <li (click)="getAll()" class="nav-item">
                     <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Todas</a>
@@ -16,25 +33,10 @@
                         <a (click)="getQueretaroSellPerYear()" class="dropdown-item" >Queretaro</a>
                     </div>
                 </li>
-<!--                 <li (click)="getMexicoSellPerYear()" class="nav-item">
-                    <a class="nav-link " href="#revenue-chart" data-toggle="tab">Mexico</a>
-                </li>
-                <li (click)="getMonterreySellPerYear()" class="nav-item">
-                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Monterrey</a>
-                </li>
-                <li (click)="getVeracruzSellPerYear()" class="nav-item">
-                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Veracruz</a>
-                </li>
-                <li (click)="getMexicaliSellPerYear()" class="nav-item">
-                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Mexicali</a>
-                </li>
-                <li (click)="getQueretaroSellPerYear()" class="nav-item">
-                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Queretaro</a>
-                </li> -->
             </ul>
-        </div>
+        </div> -->
         <div *ngIf="all" class="card-tools">
-            <ul class="nav nav-pills ml-auto">
+            <!--             <ul class="nav nav-pills ml-auto">
                 <li (click)='anio20(2020)' class="nav-item">
                     <a class="nav-link active"  data-toggle="tab">2020</a>
                 </li>
@@ -44,7 +46,18 @@
                 <li (click)='anio18(2018)' class="nav-item">
                     <a class="nav-link"  data-toggle="tab">2018</a>
                 </li>
-            </ul>
+            </ul> -->
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label (click)='anio18(2018)' class="btn  btn-primary btn-sm active">
+                    <input type="radio" name="options" id="option1" checked> 2018
+                </label>
+                <label (click)='anio19(2019)' class="btn btn-primary btn-sm">
+                    <input type="radio" name="options" id="option2"> 2019
+                </label>
+                <label (click)='anio20(2020)' class="btn btn-primary btn-sm">
+                    <input type="radio" name="options" id="option3"> 2020
+                </label>
+            </div>
         </div>
 
     </div><!-- /.card-header -->

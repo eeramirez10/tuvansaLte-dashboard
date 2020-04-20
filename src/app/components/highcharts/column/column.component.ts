@@ -20,6 +20,7 @@ export class ColumnComponent implements OnInit {
   month = this.date.getMonth();
   year = this.date.getFullYear()
   loading:boolean;
+  years: any [] = [];
 
   Highcharts: typeof Highcharts = Highcharts;
   
@@ -61,7 +62,7 @@ export class ColumnComponent implements OnInit {
 
   constructor(private tuvansaService: TuvansaService){ 
 
-
+    this.years = this.tuvansaService.getDateMonthYearsOfTotalSells();
     
     var month = this.date.getMonth();
     var year = this.date.getFullYear()
@@ -86,10 +87,6 @@ export class ColumnComponent implements OnInit {
     return this.months[month];
   }
 
-  anio(month,year){
-    
-    this.getData(month,year);
-  }
 
  
   getData( month, year){

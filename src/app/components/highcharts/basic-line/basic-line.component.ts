@@ -4,6 +4,10 @@ import * as Highcharts from "highcharts";
 import Drilldown from 'highcharts/modules/drilldown';
 import { TuvansaService } from 'src/app/services/tuvansa.service';
 
+import Exporting from 'highcharts/modules/exporting';
+import ExportData from 'highcharts/modules/export-data';
+Exporting(Highcharts);
+ExportData(Highcharts);
 Drilldown(Highcharts);
 
  
@@ -37,6 +41,9 @@ export class BasicLineComponent implements OnInit {
                 },
                 enableMouseTracking: true
             }
+    },
+    exporting: {
+      showTable: false
     }
 
   };

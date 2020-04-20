@@ -19,7 +19,7 @@ export class TuvansaService {
 
   monthString: String [] = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-  url:string = "http://3.229.71.188/proscaiapirest/index.php/Ventas";
+  url:string = "https://apirest-proscai.herokuapp.com/index.php/Ventas";
 
   constructor(private http:HttpClient,  public afAuth: AngularFireAuth){ }
 
@@ -45,56 +45,16 @@ export class TuvansaService {
 
                       
 
-                      return[{
-                        name:'Mexico',
-                        id:'Mexico',
-                        data: mexico,
-                        type:'pie'
-                      },{
-                        name:'Monterrey',
-                        id:'Monterrey',
-                        data: monterrey,
-                        type:'pie'
-
-                      },{
-                        name:'Veracruz',
-                        id:'Veracruz',
-                        data: veracruz,
-                        type:'pie'
-                      },{
-                        name:'Mexicali',
-                        id:'Mexicali',
-                        data: mexicali,
-                        type:'pie'
-                      },{
-                        name:'Queretaro',
-                        id:'Queretaro',
-                        data: queretaro,
-                        type:'pie'
-                      },{
-                        name:'Cancun',
-                        id:'Cancun',
-                        data: cancun,
-                        type:'pie'
-                      }
-                    ];
+                      return[
+                        { name:'Mexico', id:'Mexico', data: mexico, type:'pie' },
+                        { name:'Monterrey', id:'Monterrey', data: monterrey, type:'pie'},
+                        { name:'Veracruz', id:'Veracruz', data: veracruz, type:'pie' },
+                        { name:'Mexicali', id:'Mexicali', data: mexicali, type:'pie'},
+                        {name:'Queretaro', id:'Queretaro', data: queretaro, type:'pie' },
+                        { name:'Cancun', id:'Cancun', data: cancun, type:'pie'}
+                      ];
                       
                     }))
-
-/*                     {
-                      "name": "Mexico",
-                      "id": "Mexico",
-                      "data": [
-                         
-                            <?php  while($row = $resultadoo->fetch_assoc()){
-      
-                             echo  " [ '".$row['familia']."',".$row['IMPORTE']. "],"; 
-      
-                            }  ?>  
-                         
-                        
-                      ]
-                  } */
   }
 
   getSellers(sucursal, mes, anio ){
@@ -289,6 +249,32 @@ export class TuvansaService {
       }
     }
     return familiesArray;
+  }
+
+
+  getDateMonthYearsOfTotalSells(){ 
+    let date = new Date();  
+    let month = 11;
+    let i = 0;
+    let fechas = [];
+
+    for (let anio=2019; anio<=date.getFullYear() ; anio++){
+
+      if (anio === date.getFullYear()){
+        month = date.getMonth();
+      }
+      fechas.push({ "anio":anio,"mes":[] }  )
+      for(let mes=0; mes<=month; mes++){
+        fechas[i].mes.push(mes) 
+      }
+
+      i++;
+      
+    }
+
+    return fechas;
+    
+
   }
 
 
